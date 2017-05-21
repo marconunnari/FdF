@@ -28,9 +28,7 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 	swap = 0;
 	if (abs(dx) < abs(dy))
 	{
-		printf("dx %d dy %d\n", dx, dy);
 		ft_swap(&dx, &dy);
-		printf("dx %d dy %d\n", dx, dy);
 		swap = 1;
 	}
 	dx = abs(dx);
@@ -41,7 +39,6 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 	ix = p2.x >= p1.x ? 1 : -1;
 	iy = p2.y >= p1.y ? 1 : -1;
 	i = 0;
-	printf("swap %d\n", swap);
 	while (i < dx)
 	{
 		x = x + ix;
@@ -59,7 +56,6 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 			}
 			d = d + 2 * dy;
 		}
-		//printf("x %d, y %d\n", x, y);
 		mlx_pixel_put(mlx, win, x, y, 0x00FFFFFF);
 		i++;
 	}
