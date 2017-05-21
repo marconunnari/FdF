@@ -1,8 +1,4 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "mlx.h"
-#include <math.h>
+#include "fdf.h"
 
 int		my_key_funct(int keycode, void *param)
 {
@@ -18,16 +14,12 @@ int		my_mouse_funct(int button,int x,int y,void *param)
 	return (0);
 }
 
-void	drawline(void *mlx, void *win, int x1, int y1, int x2, int y2)
-{
-	mlx_pixel_put (mlx, win, x1, y1, 0x00FFFFFF);
-	mlx_pixel_put (mlx, win, x2, y2, 0x00FFFFFF);
-}
-
 int		main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*win;
+	t_point	p1;
+	t_point	p2;
 
 	if (argc != 5)
 	{
@@ -39,6 +31,10 @@ int		main(int argc, char **argv)
 	win = mlx_new_window(mlx, 400, 400, "mlx 42");
 	mlx_key_hook(win, my_key_funct, 0);
 	mlx_mouse_hook(win, my_mouse_funct, 0);
-	drawline(mlx, win, atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
+	p1.x = atoi(argv[1]);
+	p1.y = atoi(argv[2]);
+	p2.x = atoi(argv[3]);
+	p2.y = atoi(argv[4]);
+	drawline(mlx, win, p1, p2);
 	mlx_loop(mlx);
 }
