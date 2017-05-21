@@ -1,0 +1,4 @@
+a.out
+*.o
+*.a
+x11/test/mlx-test

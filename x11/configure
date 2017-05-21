@@ -10,6 +10,7 @@ fi
 conf_inc=NO
 
 for inc in \
+    /usr/include              \
     /usr/X11/include          \
     /usr/X11R6/include        \
     /usr/X11R5/include        \
@@ -43,6 +44,7 @@ for inc in \
     /usr/openwin/include      \
     /usr/openwin/share/include
  do
+	echo "$inc/X11/Xlib.h" "$inc/X11/extensions/XShm.h"
 	if [ -f "$inc/X11/Xlib.h" -a -f "$inc/X11/extensions/XShm.h" ]; then
 		conf_inc=$inc
 		break

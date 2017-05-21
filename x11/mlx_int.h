@@ -18,6 +18,7 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<string.h>
+#include	<bsd/string.h>
 #include        <unistd.h>
 #include        <fcntl.h>
 #include        <sys/mman.h>

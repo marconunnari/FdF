@@ -7,7 +7,7 @@
 int		my_key_funct(int keycode, void *param)
 {
 	printf("key event %d\n", keycode);
-	if (keycode == 53)
+	if (keycode == 53 || keycode == 65307)
 		exit(0);
 	return (0);
 }
@@ -30,7 +30,10 @@ int		main(int argc, char **argv)
 	void	*win;
 
 	if (argc != 5)
+	{
+		printf("usage: a.out x1 y1 x2 y2\n");
 		exit(0);
+	}
 	setbuf(stdout, NULL);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 400, 400, "mlx 42");
