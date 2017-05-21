@@ -2,6 +2,7 @@
 
 int		my_key_funct(int keycode, void *param)
 {
+	(void)param;
 	printf("key event %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
 		exit(0);
@@ -10,6 +11,7 @@ int		my_key_funct(int keycode, void *param)
 
 int		my_mouse_funct(int button,int x,int y,void *param)
 {
+	(void)param;
 	printf("button %d, x %d, y %d\n", button, x, y);
 	return (0);
 }
