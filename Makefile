@@ -1,4 +1,4 @@
-NAME= FdF
+NAME= fdf
 GCC= gcc -Wall -Wextra -Werror
 INCLUDES= -I includes -I libft/includes -I minilibx
 
@@ -26,10 +26,13 @@ $(DOBJS):
 $(LIBFT):
 	@make -C libft
 
+$(LIBMLX):
+	@make -C $(DLIBMLX)
+
 $(OBJS): $(DOBJS)/%.o: $(DSRCS)/%.c
 	$(GCC) $(INCLUDES) -c $< -o $@
 
-$(NAME): $(LIBFT) $(DOBJS) $(OBJS)
+$(NAME): $(LIBFT) $(LIBMLX) $(DOBJS) $(OBJS)
 	$(GCC) -o $(NAME) $(OBJS) $(LFT) $(LMLX)
 
 clean:
