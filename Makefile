@@ -6,8 +6,6 @@ LIBFT= libft/libft.a
 LFT= -L libft -lft
 
 DLIBMLX= minilibx
-LIBMLX= $(DLIBMLX)/libmlx.a
-LMLX= -L $(DLIBMLX) -lmlx
 include $(DLIBMLX)/lmlx.mk
 
 DOBJS= objs
