@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/23 22:32:21 by mnunnari         ###   ########.fr       */
+/*   Created: 2017/05/23 22:32:40 by mnunnari          #+#    #+#             */
+/*   Updated: 2017/05/23 22:40:24 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	boh(char *filename)
+int			*parse_line(char *line)
 {
-	void	*mlx;
-	void	*win;
-	int		**points;
-
-	points = parse_file(filename);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	mlx_key_hook(win,key_handler, 0);
-	mlx_loop(mlx);
+	ft_printf("%s\n", line);
+	return (NULL);
 }
 
-int		main(int argc, char **argv)
+int			**parse_file(char *filename)
 {
-	if (argc != 2)
-		ft_printf("usage: fdf map\n");
-	else
-		boh(argv[1]);
+	int			**res;
+	char		*line;
+	int			fd;
+
+	line = NULL;
+	res = NULL;
+	fd = open(filename, O_RDONLY);
+	while (get_next_line(fd, &line) > 0)
+		parse_line(line);
+	close(fd);
+	return (res);
 }

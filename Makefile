@@ -11,7 +11,7 @@ include $(DLIBMLX)/lmlx.mk
 DOBJS= objs
 DSRCS= srcs
 
-SRCS_FILES= main drawline #new#
+SRCS_FILES= main drawline key_handler parse_file #new#
 
 SRCS = $(addprefix $(DSRCS)/, $(addsuffix .c, $(SRCS_FILES)))
 OBJS = $(SRCS:$(DSRCS)/%.c=$(DOBJS)/%.o)
@@ -19,7 +19,7 @@ OBJS = $(SRCS:$(DSRCS)/%.c=$(DOBJS)/%.o)
 all: $(NAME)
 
 $(DOBJS):
-	mkdir -p $(DOBJS)
+	@mkdir -p $(DOBJS)
 
 $(LIBFT):
 	@make -C libft
@@ -28,18 +28,18 @@ $(LIBMLX):
 	@make -C $(DLIBMLX)
 
 $(OBJS): $(DOBJS)/%.o: $(DSRCS)/%.c
-	$(GCC) $(INCLUDES) -c $< -o $@
+	@$(GCC) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(LIBFT) $(LIBMLX) $(DOBJS) $(OBJS)
-	$(GCC) -o $(NAME) $(OBJS) $(LFT) $(LMLX)
+	@$(GCC) -o $(NAME) $(OBJS) $(LFT) $(LMLX)
 
 clean:
-	make clean -C libft
-	make clean -C minilibx
-	rm -rf $(DOBJS)
+	@make clean -C libft
+	@make clean -C minilibx
+	@rm -rf $(DOBJS)
 
 fclean: clean
-	make fclean -C libft
-	rm -f $(NAME)
+	@make fclean -C libft
+	@rm -f $(NAME)
 
 re: fclean all
