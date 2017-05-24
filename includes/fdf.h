@@ -5,17 +5,27 @@
 # include "mlx.h"
 # include <math.h>
 # include "libft.h"
-#include <fcntl.h>
-#include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 typedef	struct	s_point
 {
 	int	x;
 	int	y;
+	int	z;
 }		t_point;
 
-void		drawline(void *mlx, void *win, t_point p1, t_point p2);
+typedef	struct	s_fdf_info
+{
+	size_t	rows;
+	size_t	cols;
+}		t_fdf_info;
 
+void			drawline(void *mlx, void *win, t_point p1, t_point p2);
 int			key_handler(int keycode, void *param);
-int			**parse_file(char *filename);
+t_fdf_info		get_fdf_info(char *filename);
+int			**get_altitudes(char *filename, t_fdf_info info);
+t_point			*get_points(t_fdf_info, int **altitudes);
+void			draw_map(void *mlx, void *win, t_point *points, t_fdf_info info);
 #endif

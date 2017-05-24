@@ -15,7 +15,7 @@
 int		key_handler(int keycode, void *param)
 {
 	(void)param;
-	printf("key event %d\n", keycode);
+	ft_printf("key event %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
 		exit(0);
 	return (0);
