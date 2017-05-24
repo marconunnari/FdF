@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/23 22:32:21 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/24 19:14:20 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@ void	show(t_point *points, t_fdf_info info)
 	void	*win;
 
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 600, 600, "mlx 42");
+	win = mlx_new_window(mlx, SW, SH, "mlx 42");
 	mlx_key_hook(win,key_handler, 0);
-	draw_map(mlx, win, points, info);
+	drawmap(mlx, win, points, info);
 	mlx_loop(mlx);
+}
+
+void	print_points(t_fdf_info info, t_point *points)
+{
+	for (size_t i = 0; i < info.rows * info.cols; i++)
+		ft_printf("i %d, x: %d, y: %d, z: %d\n",
+			i, points[i].x, points[i].y, points[i].z);
 }
 
 void	render(char *filename)
@@ -35,9 +42,7 @@ void	render(char *filename)
 	ft_printf("cols: %d\n", info.cols);
 	alts = get_altitudes(filename, info);
 	points = get_points(info, alts);
-	for (size_t i = 0; i < info.rows * info.cols; i++)
-		ft_printf("i %d, x: %d, y: %d, z: %d\n",
-			i, points[i].x, points[i].y, points[i].z);
+//	print_points(info, points);
 	show(points, info);
 }
 

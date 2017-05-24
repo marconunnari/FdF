@@ -1,6 +1,7 @@
 NAME= fdf
 GCC= gcc -Wall -Wextra -Werror
 INCLUDES= -I includes -I libft/includes -I minilibx
+HEADER= includes/fdf.h
 
 LIBFT= libft/libft.a
 LFT= -L libft -lft
@@ -11,7 +12,8 @@ include $(DLIBMLX)/lmlx.mk
 DOBJS= objs
 DSRCS= srcs
 
-SRCS_FILES= main drawline key_handler get_altitudes get_fdf_info get_points draw_map #new#
+SRCS_FILES= main drawline key_handler get_altitudes \
+			get_fdf_info get_points drawmap #new#
 
 SRCS = $(addprefix $(DSRCS)/, $(addsuffix .c, $(SRCS_FILES)))
 OBJS = $(SRCS:$(DSRCS)/%.c=$(DOBJS)/%.o)
@@ -30,7 +32,7 @@ $(LIBMLX):
 $(OBJS): $(DOBJS)/%.o: $(DSRCS)/%.c
 	@$(GCC) $(INCLUDES) -c $< -o $@
 
-$(NAME): $(LIBFT) $(LIBMLX) $(DOBJS) $(OBJS)
+$(NAME): $(LIBFT) $(LIBMLX) $(DOBJS) $(OBJS) $(HEADER)
 	@echo "objects done!"
 	@$(GCC) -o $(NAME) $(OBJS) $(LFT) $(LMLX)
 	@echo "fdf done!"

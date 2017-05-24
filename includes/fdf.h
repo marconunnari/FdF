@@ -9,6 +9,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+# define SW 800
+# define SH 800
+# define WIDTH 30
+
 typedef	struct	s_point
 {
 	int	x;
@@ -23,9 +27,9 @@ typedef	struct	s_fdf_info
 }		t_fdf_info;
 
 void			drawline(void *mlx, void *win, t_point p1, t_point p2);
-int			key_handler(int keycode, void *param);
+int				key_handler(int keycode, void *param);
 t_fdf_info		get_fdf_info(char *filename);
-int			**get_altitudes(char *filename, t_fdf_info info);
+int				**get_altitudes(char *filename, t_fdf_info info);
 t_point			*get_points(t_fdf_info, int **altitudes);
-void			draw_map(void *mlx, void *win, t_point *points, t_fdf_info info);
+void			drawmap(void *mlx, void *win, t_point *points, t_fdf_info info);
 #endif

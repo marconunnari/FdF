@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 21:49:45 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/23 21:55:34 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/24 20:12:09 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 	int	iy;
 	int	i;
 
-	ft_printf("x1 %d y1 %d x2 %d y2 %d\n", p1.x, p1.y, p2.x, p2.y);
+//	ft_printf("p1 [%d, %d], p2 [%d, %d]\n", p1.x, p1.y, p2.x, p2.y);
 	mlx_pixel_put(mlx, win, p1.x, p1.y, 0x00FFFFFF);
 	mlx_pixel_put(mlx, win, p2.x, p2.y, 0x00FFFFFF);
 	dx = p2.x - p1.x;
