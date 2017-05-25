@@ -18,7 +18,6 @@ t_point			*get_points(t_fdf_info info, int **alts)
 			points[i].z = alts[row][col];
 			points[i].x = (col * info.tilewidth - row * info.tilewidth);
 			points[i].x += (info.rows - 1) * info.tilewidth;
-			points[i].x += info.ox;
 			points[i].y = (row * info.tilewidth + col * info.tilewidth) / 2;
 			points[i].y -= points[i].z;
 			points[i].y += info.oy;

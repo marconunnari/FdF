@@ -64,8 +64,8 @@ t_fdf_info		get_fdf_info(char *filename)
 	info.mapwidth = (info.rows + info.cols - 2) * info.tilewidth;
 	info.mapheight = (info.rows - 1) * info.tilewidth / 2 + (info.cols - 1) * info.tilewidth / 2;
 	info.oy = (SH - info.mapheight) / 2;
-	info.ox = 0;//(SW - info.mapwidth + info.tilewidth * 2) / 2;
-	ft_printf("tw %d\n", info.tilewidth);
+	info.ox = info.tilewidth;//(SW - info.mapwidth + info.tilewidth * 2) / 2;
+	ft_printf("mapwidth %d\n", info.mapwidth);
 	close(fd);
 	return (info);
 }

@@ -13,7 +13,7 @@ DOBJS= objs
 DSRCS= srcs
 
 SRCS_FILES= main drawline key_handler get_altitudes \
-			get_fdf_info get_points drawmap #new#
+			get_fdf_info get_points drawmap fill_pixel #new#
 
 SRCS = $(addprefix $(DSRCS)/, $(addsuffix .c, $(SRCS_FILES)))
 OBJS = $(SRCS:$(DSRCS)/%.c=$(DOBJS)/%.o)

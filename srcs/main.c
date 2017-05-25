@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/24 19:14:20 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/25 22:02:23 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,27 @@ void	show(t_point *points, t_fdf_info info)
 {
 	void	*mlx;
 	void	*win;
+	void	*imageptr;
+	t_image	image;
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, SW, SH, "mlx 42");
 	mlx_key_hook(win,key_handler, 0);
-	drawmap(mlx, win, points, info);
-
-	t_point p1 = {info.ox, 0,0};
-	t_point p2 = {info.mapwidth + info.ox, 0, 0};
-	t_point p3 = {info.ox, SH - 1, 0};
-	t_point p4 = {info.mapwidth + info.ox, SH - 1, 0};
-	drawline(mlx, win, p1, p2);
-	drawline(mlx, win, p1, p3);
-	drawline(mlx, win, p3, p4);
-	drawline(mlx, win, p2, p4);
-
+	imageptr = mlx_new_image(mlx, info.mapwidth + 2, SH - 1);
+	image.img = mlx_get_data_addr(imageptr, &image.bpp, &image.linesize, &image.endian);
+	(void)points;
+	drawmap(image, points, info);
+	/*
+	t_point p1 = {0, 0, 0};
+	t_point p2 = {info.mapwidth, 0, 0};
+	t_point p3 = {0, SH - 2, 0};
+	t_point p4 = {info.mapwidth, SH - 2, 0};
+	drawline(image, p1, p2);
+	drawline(image, p1, p3);
+	drawline(image, p3, p4);
+	drawline(image, p2, p4);
+	*/
+	mlx_put_image_to_window(mlx, win, imageptr, info.ox, 0);
 	mlx_loop(mlx);
 }
 
