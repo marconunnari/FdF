@@ -23,10 +23,15 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 	int	ix;
 	int	iy;
 	int	i;
+	int	rgb;
 
 //	ft_printf("p1 [%d, %d], p2 [%d, %d]\n", p1.x, p1.y, p2.x, p2.y);
-	mlx_pixel_put(mlx, win, p1.x, p1.y, 0x00FFFFFF);
-	mlx_pixel_put(mlx, win, p2.x, p2.y, 0x00FFFFFF);
+	if (p2.z > 1 || p1.z > 1)
+		rgb = 0x00FF0000;
+	else
+		rgb = 0x00FFFFFF;
+	mlx_pixel_put(mlx, win, p1.x, p1.y, rgb);
+	mlx_pixel_put(mlx, win, p2.x, p2.y, rgb);
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
 	swap = 0;
@@ -60,7 +65,7 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 			}
 			d = d + 2 * dy;
 		}
-		mlx_pixel_put(mlx, win, x, y, 0x00FFFFFF);
+		mlx_pixel_put(mlx, win, x, y, rgb);
 		i++;
 	}
 }

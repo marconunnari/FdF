@@ -29,7 +29,7 @@ $(LIBFT):
 $(LIBMLX):
 	@make -C $(DLIBMLX)
 
-$(OBJS): $(DOBJS)/%.o: $(DSRCS)/%.c
+$(OBJS): $(DOBJS)/%.o: $(DSRCS)/%.c $(HEADER)
 	@$(GCC) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(LIBFT) $(LIBMLX) $(DOBJS) $(OBJS) $(HEADER)

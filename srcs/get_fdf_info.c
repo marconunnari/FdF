@@ -7,7 +7,7 @@ void			check_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_isdigit(line[i]) && line[i] != ' ')
+		if (!ft_isdigit(line[i]) && !ft_strcont("-+ ", line[i]))
 		{
 			ft_printf("Error: invalid symbol in the map: {%c}\n", line[i]);
 			exit(0);

@@ -5,6 +5,7 @@ void			set_row(int i, char *line, int **alts, t_fdf_info info)
 	int		j;
 	char		**nbrs;
 
+	ft_printf("heila\n");
 	alts[i] = (int*)malloc(sizeof(int) * info.cols);
 	nbrs = ft_strsplit(line, ' ');
 	j = 0;

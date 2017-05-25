@@ -11,7 +11,6 @@
 
 # define SW 800
 # define SH 800
-# define WIDTH 30
 
 typedef	struct	s_point
 {
