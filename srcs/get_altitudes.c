@@ -5,7 +5,6 @@ void			set_row(int i, char *line, int **alts, t_fdf_info info)
 	int		j;
 	char		**nbrs;
 
-	ft_printf("heila\n");
 	alts[i] = (int*)malloc(sizeof(int) * info.cols);
 	nbrs = ft_strsplit(line, ' ');
 	j = 0;
@@ -26,7 +25,7 @@ int			**get_altitudes(char *filename, t_fdf_info info)
 
 	line = NULL;
 	fd = open(filename, O_RDONLY);
-	alts = (int**)malloc(sizeof(int) * info.rows);
+	alts = (int**)malloc(sizeof(int*) * info.rows);
 	i = 0;
 	while (get_next_line(fd, &line) > 0)
 		set_row(i++, line, alts, info);

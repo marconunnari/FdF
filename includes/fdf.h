@@ -10,7 +10,7 @@
 # include <unistd.h>
 
 # define SW 800
-# define SH 800
+# define SH 600
 
 typedef	struct	s_point
 {
@@ -23,6 +23,11 @@ typedef	struct	s_fdf_info
 {
 	size_t	rows;
 	size_t	cols;
+	size_t	tilewidth;
+	size_t	mapwidth;
+	size_t	mapheight;
+	size_t	oy;
+	size_t	ox;
 }		t_fdf_info;
 
 void			drawline(void *mlx, void *win, t_point p1, t_point p2);

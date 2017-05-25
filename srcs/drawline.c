@@ -28,6 +28,8 @@ void	drawline(void *mlx, void *win, t_point p1, t_point p2)
 //	ft_printf("p1 [%d, %d], p2 [%d, %d]\n", p1.x, p1.y, p2.x, p2.y);
 	if (p2.z > 1 || p1.z > 1)
 		rgb = 0x00FF0000;
+	else if (p2.z < -1 || p1.z < -1)
+		rgb = 0x005555FF;
 	else
 		rgb = 0x00FFFFFF;
 	mlx_pixel_put(mlx, win, p1.x, p1.y, rgb);
