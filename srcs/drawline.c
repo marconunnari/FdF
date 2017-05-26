@@ -6,63 +6,67 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 21:49:45 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/25 22:53:11 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/26 14:46:48 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	drawline(t_image image, t_point p1, t_point p2)
+t_rect		get_rect(t_point p1, t_point p2)
 {
-	int	swap;
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	d;
-	int	ix;
-	int	iy;
-	int	i;
-	int	rgb;
+	t_rect	rect;
 
-//	ft_printf("p1 [%d, %d], p2 [%d, %d]\n", p1.x, p1.y, p2.x, p2.y);
-	rgb = 0x00FFFFFF;
-	fill_pixel(image, p1.x, p1.y, rgb);
-	fill_pixel(image, p2.x, p2.y, rgb);
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
-	swap = 0;
-	if (abs(dx) < abs(dy))
+	rect.dx = p2.x - p1.x;
+	rect.dy = p2.y - p1.y;
+	rect.swap = 0;
+	if (abs(rect.dx) < abs(rect.dy))
 	{
-		ft_swap_ints(&dx, &dy);
-		swap = 1;
+		ft_swap_ints(&rect.dx, &rect.dy);
+		rect.swap = 1;
 	}
-	dx = abs(dx);
-	dy = abs(dy);
-	x = p1.x;
-	y = p1.y;
-	d = 2 * dy - dx;
-	ix = p2.x >= p1.x ? 1 : -1;
-	iy = p2.y >= p1.y ? 1 : -1;
-	i = 0;
-	while (i < dx)
+	rect.dx = abs(rect.dx);
+	rect.dy = abs(rect.dy);
+	rect.ix = p2.x >= p1.x ? 1 : -1;
+	rect.iy = p2.y >= p1.y ? 1 : -1;
+	return (rect);
+}
+
+t_point		next(t_point point, t_rect rect, int *d)
+{
+	point.x = point.x + rect.ix;
+	if (*d > 0)
 	{
-		x = x + ix;
-		if (d > 0)
+		point.y = point.y + rect.iy;
+		*d = *d + 2 * (rect.dy - rect.dx);
+	}
+	else
+	{
+		if (rect.swap)
 		{
-			y = y + iy;
-			d = d + 2 * (dy - dx);
+			point.y = point.y + rect.iy;
+			point.x = point.x - rect.ix;
 		}
-		else
-		{
-			if (swap)
-			{
-				y = y + iy;
-				x = x - ix;
-			}
-			d = d + 2 * dy;
-		}
-		fill_pixel(image, x, y, rgb);
+		*d = *d + 2 * rect.dy;
+	}
+	return (point);
+}
+
+void		drawline(t_image image, t_point p1, t_point p2)
+{
+	t_rect		rect;
+	t_point		point;
+	int			d;
+	int			i;
+
+	rect = get_rect(p1, p2);
+	i = 0;
+	point.x = p1.x;
+	point.y = p1.y;
+	d = 2 * rect.dy - rect.dx;
+	while (i <= rect.dx)
+	{
+		fill_pixel(image, point.x, point.y, 0x00FFFFFF);
+		point = next(point, rect, &d);
 		i++;
 	}
 }

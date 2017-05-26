@@ -19,6 +19,15 @@ typedef	struct	s_point
 	int			z;
 }				t_point;
 
+typedef	struct	s_rect
+{
+	int			swap;
+	int			dx;
+	int			dy;
+	int			ix;
+	int			iy;
+}				t_rect;
+
 typedef	struct	s_fdf_info
 {
 	size_t		rows;

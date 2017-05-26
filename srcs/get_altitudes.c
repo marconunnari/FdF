@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_altitudes.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/26 14:47:32 by mnunnari          #+#    #+#             */
+/*   Updated: 2017/05/26 15:45:22 by mnunnari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void			set_row(int i, char *line, int **alts, t_fdf_info info)
+void		set_row(int i, char *line, int **alts, t_fdf_info info)
 {
-	int		j;
+	int			j;
 	char		**nbrs;
 
 	alts[i] = (int*)malloc(sizeof(int) * info.cols);

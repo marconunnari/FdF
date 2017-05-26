@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/25 22:02:23 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:47:37 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,20 @@ void	show(t_point *points, t_fdf_info info)
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, SW, SH, "mlx 42");
-	mlx_key_hook(win,key_handler, 0);
+	mlx_key_hook(win, key_handler, 0);
 	imageptr = mlx_new_image(mlx, info.mapwidth + 2, SH - 1);
-	image.img = mlx_get_data_addr(imageptr, &image.bpp, &image.linesize, &image.endian);
+	image.img = mlx_get_data_addr(imageptr,
+			&image.bpp, &image.linesize, &image.endian);
 	(void)points;
 	drawmap(image, points, info);
-	/*
-	t_point p1 = {0, 0, 0};
-	t_point p2 = {info.mapwidth, 0, 0};
-	t_point p3 = {0, SH - 2, 0};
-	t_point p4 = {info.mapwidth, SH - 2, 0};
-	drawline(image, p1, p2);
-	drawline(image, p1, p3);
-	drawline(image, p3, p4);
-	drawline(image, p2, p4);
-	*/
 	mlx_put_image_to_window(mlx, win, imageptr, info.ox, 0);
 	mlx_loop(mlx);
-}
-
-void	print_points(t_fdf_info info, t_point *points)
-{
-	for (size_t i = 0; i < info.rows * info.cols; i++)
-		ft_printf("i %d, x: %d, y: %d, z: %d\n",
-			i, points[i].x, points[i].y, points[i].z);
 }
 
 void	render(char *filename)
 {
 	t_fdf_info	info;
-	int		**alts;
+	int			**alts;
 	t_point		*points;
 
 	info = get_fdf_info(filename);
@@ -58,7 +42,6 @@ void	render(char *filename)
 	ft_printf("cols: %d\n", info.cols);
 	alts = get_altitudes(filename, info);
 	points = get_points(info, alts);
-//	print_points(info, points);
 	show(points, info);
 }
 
