@@ -18,11 +18,9 @@ void			derive_info(t_fdf_info *info)
 	if (info->tilewidth < 1)
 		info->tilewidth = 1;
 	info->mapwidth = (info->rows + info->cols - 2) * info->tilewidth;
-	info->mapheight = (info->rows - 1) * info->tilewidth / 2 +
-						(info->cols - 1) * info->tilewidth / 2;
-	info->oy = (SH - info->mapheight) / 2;
+	info->mapheight = (info->rows + info->cols - 2) * info->tilewidth / info->coeff;
+	info->oy = (SW - info->mapheight) / 2;
 	info->ox = (SW - info->mapwidth) / 2;;
-	ft_printf("mapwidth %d\n", info->mapwidth);
 }
 
 void			check_line(char *line)
@@ -93,6 +91,5 @@ t_fdf_info		get_fdf_info(char *filename)
 		parse_fd(fd, &info);
 		close(fd);
 	}
-	derive_info(&info);
 	return (info);
 }

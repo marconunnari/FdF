@@ -10,7 +10,6 @@
 # include <unistd.h>
 
 # define SW 800
-# define SH 600
 
 typedef	struct	s_point
 {
@@ -37,7 +36,17 @@ typedef	struct	s_fdf_info
 	size_t		mapheight;
 	size_t		oy;
 	size_t		ox;
+	unsigned char	coeff;
+	int		**alts;
 }				t_fdf_info;
+
+typedef	struct	s_key_param
+{
+	void		*mlx;
+	void		*win;
+	void		*imageptr;
+	t_fdf_info	info;
+}				t_key_param;
 
 typedef	struct	s_image
 {
@@ -49,6 +58,7 @@ typedef	struct	s_image
 
 int				key_handler(int keycode, void *param);
 t_fdf_info		get_fdf_info(char *filename);
+void			derive_info(t_fdf_info *info);
 int				**get_altitudes(char *filename, t_fdf_info info);
 t_point			*get_points(t_fdf_info, int **altitudes);
 void			drawline(t_image image, t_point p1, t_point p2);
