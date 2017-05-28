@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:28:28 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/23 22:28:37 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/28 21:35:27 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ void		rotate(t_key_param *param, int dir)
 
 int		key_handler(int keycode, void *param)
 {
-	(void)param;
-//	ft_printf("key event %d\n", keycode);
-	if (keycode == 65362)
+	ft_printf("key event %d\n", keycode);
+	if (keycode == 65362 || keycode == 126)
 		rotate((t_key_param*)param, 1);
-	if (keycode == 65364)
+	if (keycode == 65364 || keycode == 125)
 		rotate((t_key_param*)param, -1);
 	if (keycode == 53 || keycode == 65307)
 		exit(0);
