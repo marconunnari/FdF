@@ -21,7 +21,7 @@ void			derive_info(t_fdf_info *info)
 	info->mapheight = (info->rows - 1) * info->tilewidth / 2 +
 						(info->cols - 1) * info->tilewidth / 2;
 	info->oy = (SH - info->mapheight) / 2;
-	info->ox = info->tilewidth;
+	info->ox = (SW - info->mapwidth) / 2;;
 	ft_printf("mapwidth %d\n", info->mapwidth);
 }
 
