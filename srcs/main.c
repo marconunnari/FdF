@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/26 15:47:37 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/28 21:51:04 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	show(t_point *points, t_fdf_info info)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, SW, SW, "mlx 42");
 	imageptr = mlx_new_image(mlx, info.mapwidth + 2, SW - 1);
-	image.img = mlx_get_data_addr(imageptr, &image.bpp, &image.linesize, &image.endian);
+	image.img = mlx_get_data_addr(imageptr,
+			&image.bpp, &image.linesize, &image.endian);
 	drawmap(image, points, info);
 	mlx_put_image_to_window(mlx, win, imageptr, info.ox, 0);
 	key_param.mlx = mlx;

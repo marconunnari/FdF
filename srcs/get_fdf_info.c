@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:45:29 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/26 15:46:52 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/28 21:59:36 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void			derive_info(t_fdf_info *info)
 	if (info->tilewidth < 1)
 		info->tilewidth = 1;
 	info->mapwidth = (info->rows + info->cols - 2) * info->tilewidth;
-	info->mapheight = (info->rows + info->cols - 2) * info->tilewidth / info->coeff;
+	info->mapheight = (info->rows + info->cols - 2)
+						* info->tilewidth / info->coeff;
 	info->oy = (SW - info->mapheight) / 2;
-	info->ox = (SW - info->mapwidth) / 2;;
+	info->ox = (SW - info->mapwidth) / 2;
 }
 
 void			check_line(char *line)
