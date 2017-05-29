@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/28 21:51:04 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/05/29 14:18:35 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	render(char *filename)
 	t_point		*points;
 
 	info = get_fdf_info(filename);
+	ft_printfnl("Up and down arrows to rotate");
 	info.alts = get_altitudes(filename, info);
 	info.coeff = 2;
 	derive_info(&info);
