@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/29 13:19:38 by mnunnari          #+#    #+#             */
+/*   Updated: 2017/05/29 13:20:48 by mnunnari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -35,8 +47,8 @@ typedef	struct	s_fdf_info
 	size_t		mapheight;
 	size_t		oy;
 	size_t		ox;
-	unsigned char	coeff;
-	int		**alts;
+	char		coeff;
+	int			**alts;
 }				t_fdf_info;
 
 typedef	struct	s_key_param
@@ -59,7 +71,7 @@ int				key_handler(int keycode, void *param);
 t_fdf_info		get_fdf_info(char *filename);
 void			derive_info(t_fdf_info *info);
 int				**get_altitudes(char *filename, t_fdf_info info);
-t_point			*get_points(t_fdf_info, int **altitudes);
+t_point			*get_points(t_fdf_info info, int **altitudes);
 void			drawline(t_image image, t_point p1, t_point p2);
 void			drawmap(t_image image, t_point *points, t_fdf_info info);
 void			fill_pixel(t_image img, int x, int y, int color);
