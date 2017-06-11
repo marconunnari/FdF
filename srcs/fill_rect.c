@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawline.c                                         :+:      :+:    :+:   */
+/*   fill_rect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/23 21:49:45 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/26 14:46:48 by mnunnari         ###   ########.fr       */
+/*   Created: 2017/06/11 23:26:40 by mnunnari          #+#    #+#             */
+/*   Updated: 2017/06/11 23:26:59 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_point		next(t_point point, t_rect rect, int *d)
 	return (point);
 }
 
-void		drawline(t_image image, t_point p1, t_point p2)
+void		fill_rect(t_image image, t_point p1, t_point p2, int color)
 {
 	t_rect		rect;
 	t_point		point;
@@ -65,7 +65,7 @@ void		drawline(t_image image, t_point p1, t_point p2)
 	d = 2 * rect.dy - rect.dx;
 	while (i <= rect.dx)
 	{
-		fill_pixel(image, point.x, point.y, 0x00FFFFFF);
+		fill_pixel(image, point.x, point.y, color);
 		point = next(point, rect, &d);
 		i++;
 	}

@@ -12,8 +12,8 @@ include $(DLIBMLX)/lmlx.mk
 DOBJS= objs
 DSRCS= srcs
 
-SRCS_FILES= main drawline key_handler get_altitudes \
-			get_fdf_info get_points drawmap fill_pixel #new#
+SRCS_FILES= main key_handler get_altitudes get_fdf_info \
+			fill_pixel fill_rect fill_map #new#
 
 SRCS = $(addprefix $(DSRCS)/, $(addsuffix .c, $(SRCS_FILES)))
 OBJS = $(SRCS:$(DSRCS)/%.c=$(DOBJS)/%.o)

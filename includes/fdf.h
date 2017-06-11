@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 13:19:38 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/29 13:20:48 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/06/11 23:50:51 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_fdf_info		get_fdf_info(char *filename);
 void			derive_info(t_fdf_info *info);
 int				**get_altitudes(char *filename, t_fdf_info info);
 t_point			*get_points(t_fdf_info info, int **altitudes);
-void			drawline(t_image image, t_point p1, t_point p2);
-void			drawmap(t_image image, t_point *points, t_fdf_info info);
 void			fill_pixel(t_image img, int x, int y, int color);
+void			fill_rect(t_image image, t_point p1, t_point p2, int color);
+void			fill_map(t_image image, t_fdf_info info);
 #endif

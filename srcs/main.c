@@ -6,13 +6,13 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:00:10 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/05/29 14:18:35 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/06/11 23:47:53 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	show(t_point *points, t_fdf_info info)
+void	show(t_fdf_info info)
 {
 	void			*mlx;
 	void			*win;
@@ -25,7 +25,7 @@ void	show(t_point *points, t_fdf_info info)
 	imageptr = mlx_new_image(mlx, info.mapwidth + 2, SW - 1);
 	image.img = mlx_get_data_addr(imageptr,
 			&image.bpp, &image.linesize, &image.endian);
-	drawmap(image, points, info);
+	fill_map(image, info);
 	mlx_put_image_to_window(mlx, win, imageptr, info.ox, 0);
 	key_param.mlx = mlx;
 	key_param.win = win;
@@ -38,15 +38,13 @@ void	show(t_point *points, t_fdf_info info)
 void	render(char *filename)
 {
 	t_fdf_info	info;
-	t_point		*points;
 
 	info = get_fdf_info(filename);
 	ft_printfnl("Up and down arrows to rotate");
 	info.alts = get_altitudes(filename, info);
 	info.coeff = 2;
 	derive_info(&info);
-	points = get_points(info, info.alts);
-	show(points, info);
+	show(info);
 }
 
 int		main(int argc, char **argv)
