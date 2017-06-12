@@ -6,7 +6,7 @@
 /*   By: mnunnari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 23:28:23 by mnunnari          #+#    #+#             */
-/*   Updated: 2017/06/12 00:07:27 by mnunnari         ###   ########.fr       */
+/*   Updated: 2017/06/13 00:31:22 by mnunnari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,25 @@ t_point			project(int x, int y, int z, t_fdf_info info)
 {
 	t_point		p;
 
-	p.x = (x - y) * info.tilewidth;
+	x = x * info.tilewidth;
+	y = y * info.tilewidth;
+	p.x = x - y;
 	p.x += (info.rows - 1) * info.tilewidth;
-	p.y = (x + y) * info.tilewidth / 2;
+	p.y = floor((y + x) / 2);
 	p.y += info.oy;
 	p.y -= z;
 	return (p);
+}
+
+int				rgb(unsigned char r, unsigned char g, unsigned char b)
+{
+	int		color;
+
+	color = 0;
+	color |= r << 16;
+	color |= g << 8;
+	color |= b;
+	return (color);
 }
 
 void			fill_map(t_image image, t_fdf_info info)
@@ -42,7 +55,8 @@ void			fill_map(t_image image, t_fdf_info info)
 			z = info.alts[y][x];
 			top = project(x, y, z, info);
 			bottom = project(x, y, 0, info);
-			color = 0x00FFFFFF;
+			z /= 2;
+			color = rgb(244 - 30 * z, 164 - 20 * z, 98 - 10 * z);
 			fill_rect(image, top, bottom, color);
 			x++;
 		}
