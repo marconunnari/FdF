@@ -34,7 +34,7 @@ $(OBJS): $(DOBJS)/%.o: $(DSRCS)/%.c $(HEADER)
 
 $(NAME): $(LIBFT) $(LIBMLX) $(DOBJS) $(OBJS) $(HEADER)
 	@echo "objects done!"
-	@$(GCC) -o $(NAME) $(OBJS) $(LFT) $(LMLX)
+	@$(GCC) -o $(NAME) $(OBJS) $(LFT) $(LMLX) -lm
 	@echo "fdf done!"
 
 clean:

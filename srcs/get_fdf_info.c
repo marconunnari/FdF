@@ -84,7 +84,7 @@ t_fdf_info		get_fdf_info(char *filename)
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 	{
-		perror(filename);
+		//perror(filename);
 		exit(0);
 	}
 	else
